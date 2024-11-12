@@ -1,0 +1,296 @@
+.myfirstapp-SP {
+  display: flex;
+  max-width: 1220px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 21px;
+  position: relative;
+  background-color: #f5f5f6;
+  width: 100%;
+  min-width: 375px;
+  min-height: 700px;
+}
+
+.myfirstapp-SP .content {
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+  align-items: center;
+  gap: 56px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.myfirstapp-SP .input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.myfirstapp-SP .upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.myfirstapp-SP .lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.myfirstapp-SP .h {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.myfirstapp-SP .div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  flex: 0 0 auto;
+  position: relative;
+  align-self: stretch;
+}
+
+.myfirstapp-SP .text-wrapper {
+  margin-top: -1.00px;
+  font-family: "Noto Sans JP-Bold", Helvetica;
+  font-weight: 700;
+  color: #181924;
+  font-size: 26px;
+  letter-spacing: 0;
+  line-height: 36.7px;
+  position: relative;
+  align-self: stretch;
+}
+
+.myfirstapp-SP .text-wrapper-2 {
+  position: relative;
+  align-self: stretch;
+  font-family: "Noto Sans JP-Regular", Helvetica;
+  font-weight: 400;
+  color: #181924;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 22.0px;
+}
+
+.myfirstapp-SP .button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #004098;
+}
+
+.myfirstapp-SP .img {
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+
+.myfirstapp-SP .text-wrapper-3 {
+  font-family: "Noto Sans JP-Medium", Helvetica;
+  font-weight: 500;
+  color: #004098;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18.8px;
+  position: relative;
+  width: fit-content;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.myfirstapp-SP .CTA-button {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 56px;
+  background-color: #004098;
+  border-radius: 8px;
+}
+
+.myfirstapp-SP .text-wrapper-4 {
+  position: absolute;
+  width: 285px;
+  height: 20px;
+  top: 17px;
+  left: 24px;
+  font-family: "Noto Sans JP-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.myfirstapp-SP .output {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.myfirstapp-SP .text-wrapper-5 {
+  margin-top: -1.00px;
+  font-family: "Noto Sans JP-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 26px;
+  line-height: 36.7px;
+  position: relative;
+  width: fit-content;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.myfirstapp-SP .frame {
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+  align-items: flex-start;
+  padding: 20px 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.myfirstapp-SP .div-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #e8e8e8;
+}
+
+.myfirstapp-SP .table-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0px 0px 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #e8e8e8;
+}
+
+.myfirstapp-SP .text-wrapper-6 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Noto Sans JP-Medium", Helvetica;
+  font-weight: 500;
+  color: #181924;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 22.0px;
+}
+
+.myfirstapp-SP .table-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 0px 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #e8e8e8;
+}
+
+.myfirstapp-SP .table-color {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 0px 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.myfirstapp-SP .titletext-color {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: var(--body-strong-font-family);
+  font-weight: var(--body-strong-font-weight);
+  color: #181924;
+  font-size: var(--body-strong-font-size);
+  letter-spacing: var(--body-strong-letter-spacing);
+  line-height: var(--body-strong-line-height);
+  font-style: var(--body-strong-font-style);
+}
+
+.myfirstapp-SP .text-color {
+  position: relative;
+  align-self: stretch;
+  font-family: var(--body-font-family);
+  font-weight: var(--body-font-weight);
+  color: #181924;
+  font-size: var(--body-font-size);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+  font-style: var(--body-font-style);
+}

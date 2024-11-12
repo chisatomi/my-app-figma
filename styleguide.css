@@ -1,0 +1,14 @@
+:root {
+  --body-strong-font-family: "Noto Sans JP", Helvetica;
+  --body-strong-font-weight: 500;
+  --body-strong-font-size: 14px;
+  --body-strong-letter-spacing: 0px;
+  --body-strong-line-height: 157.00000524520874%;
+  --body-strong-font-style: normal;
+  --body-font-family: "Noto Sans JP", Helvetica;
+  --body-font-weight: 400;
+  --body-font-size: 14px;
+  --body-letter-spacing: 0px;
+  --body-line-height: 157.00000524520874%;
+  --body-font-style: normal;
+}
