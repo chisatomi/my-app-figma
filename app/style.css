@@ -1,0 +1,257 @@
+/* 画面全体 */
+.myfirstapp-SP {
+  align-items: flex-start;
+  background-color: #f5f5f6;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  max-width: 1220px;
+  min-height: 730px;
+  min-width: 375px;
+  padding: 24px 21px;
+  position: relative;
+  width: 100%;
+}
+
+.myfirstapp-SP .content {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 56px;
+  max-width: 560px;
+  position: relative;
+}
+
+.myfirstapp-SP .upload-2 {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  width: 100%;
+}
+
+.myfirstapp-SP .design-component-instance-node {
+  flex: 0 0 auto !important;
+}
+
+.myfirstapp-SP .design-component-instance-node-2 {
+  align-self: stretch !important;
+  width: 100% !important;
+}
+
+.myfirstapp-SP .output {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  width: 100%;
+}
+
+.myfirstapp-SP .box {
+  align-items: flex-start;
+  align-self: stretch;
+  background-color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  max-width: 560px;
+  padding: 20px 16px;
+  position: relative;
+  width: 100%;
+}
+
+.myfirstapp-SP .table-instance {
+  align-self: stretch;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.myfirstapp-SP .table-2 {
+  border-bottom-style: unset !important;
+  border-bottom-width: unset !important;
+  border-color: unset !important;
+  padding: 16px 0px 0px !important;
+}
+
+/* UploacButton */
+.upload-button {
+  align-items: center;
+  border: 1px solid;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100px;
+  justify-content: center;
+  position: relative;
+  width: 333px;
+}
+
+.upload-button .upload {
+  height: 36px;
+  position: relative;
+  width: 36px;
+}
+
+.upload-button .text-wrapper {
+  color: #004098;
+  font-family: "Noto Sans JP-Medium", Helvetica;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 18.8px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.upload-button.hover-true {
+  background-color: #edeefa;
+  border-color: var(--urbanblue);
+}
+
+.upload-button.hover-false {
+  background-color: #ffffff;
+  border-color: #004098;
+}
+
+/* LockUp */
+
+.lockup {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  width: 333px;
+}
+
+.lockup .h {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  width: 100%;
+}
+
+.lockup .text-wrapper {
+  align-self: stretch;
+  color: #181924;
+  font-family: "Noto Sans JP-Bold", Helvetica;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 36.7px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.lockup .keymessage {
+  align-self: stretch;
+  color: #181924;
+  font-family: "Noto Sans JP-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 22.0px;
+  position: relative;
+}
+
+/* CtaButton */
+.CTA-button {
+  border-radius: 8px;
+  height: 56px;
+  position: relative;
+  width: 333px;
+}
+
+.CTA-button .text-wrapper {
+  color: #ffffff;
+  font-family: "Noto Sans JP-Bold", Helvetica;
+  font-size: 16px;
+  font-weight: 700;
+  height: 20px;
+  left: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 17px;
+  width: 285px;
+}
+
+.CTA-button.disabled-true {
+  background-color: #e8e8e8;
+}
+
+.CTA-button.disabled-false.hover-false {
+  background-color: #004098;
+}
+
+.CTA-button.hover-true.disabled-false {
+  background-color: #edeefa;
+}
+
+/* Table */
+.table {
+  align-items: flex-start;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.table .table-logo {
+  align-items: flex-start;
+  align-self: stretch;
+  background-color: #ffffff;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #e8e8e8;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0px;
+  position: relative;
+  width: 100%;
+}
+
+.table .titletext-logo {
+  align-self: stretch;
+  color: #181924;
+  font-family: "Noto Sans JP-Medium", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 22.0px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.table .text-logo {
+  align-self: stretch;
+  color: #181924;
+  font-family: "Noto Sans JP-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 22.0px;
+  position: relative;
+}
