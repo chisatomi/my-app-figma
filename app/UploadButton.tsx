@@ -1,15 +1,15 @@
 'use client'
-import React, { useState } from "react";
+import React, { useState, ButtonHTMLAttributes } from "react";
 import uploadlogo from "./image.svg";
 import "./style.css";
 import Image from "next/image";
 
 interface Props {
   hover: boolean;
-  className: any;
+  className: string;
 }
 
-export const UploadButton = ({ hover, className }: Props): JSX.Element => {
+export const UploadButton = ({ hover, className, ...props }: Props & ButtonHTMLAttributes<HTMLButtonElement>): JSX.Element => {
   const [isHover, setIsHover] = useState(false)
   const onHover = () => {
     console.log("on")
@@ -23,6 +23,7 @@ export const UploadButton = ({ hover, className }: Props): JSX.Element => {
     <button className={`upload-button hover-${isHover} ${className}`}
       onMouseEnter={onHover}
       onMouseLeave={offHover}
+      {...props}
     >
       <Image className="upload" alt="Upload" src={uploadlogo} />
       <div className="text-wrapper">ファイルを選択</div>

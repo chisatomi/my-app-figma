@@ -1,18 +1,19 @@
 'use client'
-import React, { useState } from "react";
+import React, { useState, ButtonHTMLAttributes } from "react";
 import "./style.css";
 
 interface Props {
   disabled: boolean;
   hover: boolean;
-  className: any;
+  className: string;
 }
 
 export const CtaButton = ({
-  disabled,
   hover,
+  disabled,
   className,
-}: Props): JSX.Element => {
+  ...props
+}: Props & ButtonHTMLAttributes<HTMLButtonElement>): JSX.Element => {
   const [isHover, setIsHover] = useState(false)
   const onHover = () => {
     console.log("on")
@@ -27,6 +28,7 @@ export const CtaButton = ({
       className={`CTA-button disabled-${disabled} hover-${isHover} ${className}`}
       onMouseEnter={onHover}
       onMouseLeave={offHover}
+      {...props}
     >
       <div className="text-wrapper">チェックする</div>
     </button>

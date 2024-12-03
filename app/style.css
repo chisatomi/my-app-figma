@@ -82,7 +82,7 @@
   padding: 16px 0px 0px !important;
 }
 
-/* UploacButton */
+/* UploadButton */
 .upload-button {
   align-items: center;
   border: 1px solid;
@@ -179,18 +179,14 @@
 }
 
 .CTA-button .text-wrapper {
+  margin: auto;
   color: #ffffff;
   font-family: "Noto Sans JP-Bold", Helvetica;
   font-size: 16px;
   font-weight: 700;
   height: 20px;
-  left: 24px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 17px;
-  width: 285px;
 }
 
 .CTA-button.disabled-true {
