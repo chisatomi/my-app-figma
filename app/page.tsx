@@ -15,8 +15,6 @@ export default function MyfirstappSp(): JSX.Element {
     return !!fileInputRef.current && fileInputRef.current.click()
   }
 
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
   // ファイルを保持できるようにする
   const [file, setFile] = useState<File | null>(null);
 
@@ -26,6 +24,19 @@ export default function MyfirstappSp(): JSX.Element {
     if (files && files[0]) {
       setFile(files[0])
     }
+  }
+
+  // アップロードした画像を表示する
+  const [profileImage, setProfileImage] = useState("./image.svg");
+  const fileInputRef = useRef<HTMLInputElement>(null!);
+
+  // const onProfileButtonClick = () =>
+
+  const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+
+    const fileObject = e.target.files[0];
+    setProfileImage(window.URL.createObjectURL(fileObject));
   }
 
   // 送信ボタンを押下してリクエスト送信する
@@ -58,13 +69,17 @@ export default function MyfirstappSp(): JSX.Element {
             hover={false}
             onClick={onClickUploadButton}
           />
+          <img
+            src={profileImage}
+            className="h-max w-max rounded"
+          />
           <input
             name="file"
             type="file"
             accept="image/*"
             hidden
             ref={fileInputRef}
-            onChange={onChangefile}
+            onChange={onChangefile,onFileInputChange}
           />
           <CtaButton
             className="design-component-instance-node-2"
