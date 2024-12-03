@@ -7,6 +7,8 @@ import { UploadButton } from "./UploadButton";
 import "./style.css";
 import axios, { AxiosError } from "axios";
 
+const apiUrl = 'https://vision.googleapis.com/v1/images:annotate';
+
 export default function MyfirstappSp(): JSX.Element {
 
   // アップロードボタンをクリックするとファイルアップロードが立ち上がる
@@ -27,7 +29,7 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // アップロードした画像を表示する
-  const [profileImage, setProfileImage] = useState("./image.svg");
+  const [profileImage, setProfileImage] = useState("/images/noimage.png");
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
   // const onProfileButtonClick = () =>
@@ -40,21 +42,49 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // 送信ボタンを押下してリクエスト送信する
-  const onClickSubmit = async () => {
+  const onClickSubmit = () => {
     console.log("submit");
     if (!file) {
       return
     }
     const formData = new FormData()
     formData.append("file", file)
+    // Base64データに変換
+    const imageReader = new FileReader();
+    imageReader.addEventListener("load", async function(e){
+      const resultImage =(imageReader.result as string).split(",").slice(1).join(",");
+      // URLに送信する
+      const headers = {
+        headers: {
+          Authorization: "Bearer: ",
+          "x-goog-user-project": "",
+          "Content-Type" : "application/json; charset=utf-8",
+        }
+      }
+      const requestBody = {
+        requests: [
+          {
+            image: {
+              content: resultImage
+            }
+          },{
+            features: {
+              "maxResults": 100,
+              "type": "IMAGE_PROPERTIES"
+            }
+          }
+        ]
+      }
+      await axios.post(`${apiUrl}`, requestBody, headers)
+        .then((res) => {
+          console.log(res.data)
+        })
+        .catch((e: AxiosError) => {
+          console.error(e)
+        })
 
-    await axios.post(`${apiUrl}/api/upload`, formData)
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((e: AxiosError) => {
-        console.error(e)
-      })
+    });
+    imageReader.readAsDataURL(file);
   }
 
   return (
@@ -79,7 +109,7 @@ export default function MyfirstappSp(): JSX.Element {
             accept="image/*"
             hidden
             ref={fileInputRef}
-            onChange={onChangefile,onFileInputChange}
+            onChange={(e) => {onChangefile(e);onFileInputChange(e);}}
           />
           <CtaButton
             className="design-component-instance-node-2"
