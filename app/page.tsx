@@ -6,6 +6,9 @@ import { Table } from "./Table";
 import { UploadButton } from "./UploadButton";
 import "./style.css";
 import axios, { AxiosError } from "axios";
+import { headers } from "next/headers";
+
+const apiUrl = 'https://vision.googleapis.com/v1/images:annotate'
 
 export default function MyfirstappSp(): JSX.Element {
 
@@ -27,7 +30,7 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // アップロードした画像を表示する
-  const [profileImage, setProfileImage] = useState("./image.svg");
+  const [profileImage, setProfileImage] = useState("/image/noimage.png");
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
   // const onProfileButtonClick = () =>
@@ -40,21 +43,50 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // 送信ボタンを押下してリクエスト送信する
-  const onClickSubmit = async () => {
+  const onClickSubmit = () => {
     console.log("submit");
     if (!file) {
       return
     }
     const formData = new FormData()
     formData.append("file", file)
+    // Base64データに変換
+    const imageReader = new FileReader();
 
-    await axios.post(`${apiUrl}/api/upload`, formData)
+    imageReader.addEventListener("load", async function (e) {
+      const resultImage = (imageReader.result as string).split(",").slice(1).join(",");
+      // URLに送信する
+      // const headers = {
+      //   headers: {
+      //     Authorization: "Bearer: ここにおーそりのいれる",
+      //     "x-goog-user-project": "ぷろじぇくとID入れる",
+      //     "Content-Type: application/json; charset=utf-8",
+      //   }
+      // }
+      const requestBody = {
+        requests: [
+          {
+            image: {
+              content: resultImage
+            }
+          }, {
+            features: {
+              "maxResults": 100,
+              "type": "IMAGE_PROPERTIES"
+            }
+          }
+        ]
+
+      }
+      await axios.post(`${apiUrl}`, requestBody, headers)
       .then((res) => {
         console.log(res.data)
       })
       .catch((e: AxiosError) => {
         console.error(e)
       })
+    });
+    imageReader.readAsDataURL(file);
   }
 
   return (
@@ -71,7 +103,7 @@ export default function MyfirstappSp(): JSX.Element {
           />
           <img
             src={profileImage}
-            className="h-max w-max rounded"
+            className="h-100% w-100% rounded"
           />
           <input
             name="file"
@@ -79,7 +111,7 @@ export default function MyfirstappSp(): JSX.Element {
             accept="image/*"
             hidden
             ref={fileInputRef}
-            onChange={onChangefile,onFileInputChange}
+            onChange={(e) => { onChangefile(e); onFileInputChange(e); }}
           />
           <CtaButton
             className="design-component-instance-node-2"
