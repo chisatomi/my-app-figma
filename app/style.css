@@ -117,7 +117,7 @@
 
 .upload-button.hover-true {
   background-color: #edeefa;
-  border-color: var(--urbanblue);
+  border-color: var(#004098);
 }
 
 .upload-button.hover-false {

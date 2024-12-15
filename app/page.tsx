@@ -27,7 +27,7 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // アップロードした画像を表示する
-  const [profileImage, setProfileImage] = useState("./image.svg");
+  const [profileImage, setProfileImage] = useState("/image/noimage.png");
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
   // const onProfileButtonClick = () =>
@@ -48,7 +48,7 @@ export default function MyfirstappSp(): JSX.Element {
     const formData = new FormData()
     formData.append("file", file)
 
-    await axios.post(`${apiUrl}/api/upload`, formData)
+    await axios.post(`${apiUrl}`, formData)
       .then((res) => {
         console.log(res.data)
       })
@@ -71,7 +71,7 @@ export default function MyfirstappSp(): JSX.Element {
           />
           <img
             src={profileImage}
-            className="h-max w-max rounded"
+            className="h-100% w-100% rounded"
           />
           <input
             name="file"
@@ -79,7 +79,7 @@ export default function MyfirstappSp(): JSX.Element {
             accept="image/*"
             hidden
             ref={fileInputRef}
-            onChange={onChangefile,onFileInputChange}
+            onChange={(e) => { onChangefile(e); onFileInputChange(e); }}
           />
           <CtaButton
             className="design-component-instance-node-2"
