@@ -5,7 +5,8 @@ import { Lockup } from "./Lockup";
 import { Table } from "./Table";
 import { UploadButton } from "./UploadButton";
 import "./style.css";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
+import { google } from "@google-cloud/vision/build/protos/protos";
 
 export default function MyfirstappSp(): JSX.Element {
 
@@ -18,7 +19,7 @@ export default function MyfirstappSp(): JSX.Element {
   // ファイルを保持できるようにする
   const [file, setFile] = useState<File | null>(null);
 
-  const [apiResults, setApiResults] = useState<any>(null);
+  const [apiResults, setApiResults] = useState<google.cloud.vision.v1.AnnotateImageResponse|null>(null);
 
   const onChangefile = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("change");
@@ -29,7 +30,7 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // アップロードした画像を表示する
-  const [profileImage, setProfileImage] = useState();
+  const [profileImage, setProfileImage] = useState<string>();
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
   // const onProfileButtonClick = () =>
@@ -155,8 +156,8 @@ export default function MyfirstappSp(): JSX.Element {
                           width: "50px",
                           height: "50px",
                           backgroundColor: `rgb(${apiResults.imagePropertiesAnnotation.dominantColors.colors[0].color.red}, 
-                                                   ${apiResults.imagePropertiesAnnotation.dominantColors.colors[0].color.green}, 
-                                                   ${apiResults.imagePropertiesAnnotation.dominantColors.colors[0].color.blue})`
+                                                ${apiResults.imagePropertiesAnnotation.dominantColors.colors[0].color.green}, 
+                                                ${apiResults.imagePropertiesAnnotation.dominantColors.colors[0].color.blue})`
                         }}
                       />
                     ) : "なし"
