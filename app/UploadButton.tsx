@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const UploadButton = ({ hover, className, ...props }: Props & ButtonHTMLAttributes<HTMLButtonElement>): JSX.Element => {
-  const [isHover, setIsHover] = useState(false)
+  const [isHover, setIsHover] = useState(hover)
   const onHover = () => {
     console.log("on")
     setIsHover(true)

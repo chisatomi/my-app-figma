@@ -5,10 +5,15 @@ import { Lockup } from "./Lockup";
 import { Table } from "./Table";
 import { UploadButton } from "./UploadButton";
 import "./style.css";
+<<<<<<< HEAD
 import axios, { AxiosError } from "axios";
 import { headers } from "next/headers";
 
 const apiUrl = 'https://vision.googleapis.com/v1/images:annotate'
+=======
+import axios from "axios";
+import { google } from "@google-cloud/vision/build/protos/protos";
+>>>>>>> main
 
 export default function MyfirstappSp(): JSX.Element {
 
@@ -21,6 +26,8 @@ export default function MyfirstappSp(): JSX.Element {
   // ファイルを保持できるようにする
   const [file, setFile] = useState<File | null>(null);
 
+  const [apiResults, setApiResults] = useState<google.cloud.vision.v1.AnnotateImageResponse|null>(null);
+
   const onChangefile = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("change");
     const files = e.target.files
@@ -30,7 +37,11 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // アップロードした画像を表示する
+<<<<<<< HEAD
   const [profileImage, setProfileImage] = useState("/image/noimage.png");
+=======
+  const [profileImage, setProfileImage] = useState<string>();
+>>>>>>> main
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
   // const onProfileButtonClick = () =>
@@ -46,8 +57,10 @@ export default function MyfirstappSp(): JSX.Element {
   const onClickSubmit = () => {
     console.log("submit");
     if (!file) {
-      return
+      console.error("ファイルがせんたくされていません");
+      return;
     }
+<<<<<<< HEAD
     const formData = new FormData()
     formData.append("file", file)
     // Base64データに変換
@@ -88,6 +101,56 @@ export default function MyfirstappSp(): JSX.Element {
     });
     imageReader.readAsDataURL(file);
   }
+=======
+
+    // ファイルをBase64形式に変換
+    const convertToBase64 = (file: File): Promise<string> => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result!.toString().split(",")[1]); // Non-null assertion
+        reader.onerror = (error) => reject(error);
+      });
+    };
+
+    try {
+      const base64Image = await convertToBase64(file);
+
+      // Vision API 用リクエストデータ作成
+      const requestBody = {
+        requests: [
+          {
+            image: { content: base64Image }, // Base64画像データ
+            features: [
+              { type: "LABEL_DETECTION", maxResults: 10 }, // 検出タイプと結果数
+              { type: "LOGO_DETECTION", maxResults: 5 }, // ここでロゴ検出
+              {type: "IMAGE_PROPERTIES" } // ここでカラー情報を指定
+            ]
+          },
+        ],
+      };
+
+      // Vision API のエンドポイント
+      const apiKey = process.env.NEXT_PUBLIC_GOOGLE_CLOUD_VISION_API_KEY;
+      if (!apiKey) {
+        console.error("環境変数 NEXT_PUBLIC_GOOGLE_CLOUD_VISION_API_KEY が設定されていません");
+        return;
+      }
+      const apiUrl = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
+
+      // APIリクエスト送信
+      const response = await axios.post(apiUrl, requestBody);
+
+      // 結果をコンソールに出力
+      setApiResults(response.data.responses[0]); // 必要な部分を保存
+      console.log("Vision API レスポンス:", response.data);
+      // カラー情報をデバッグ用に出力
+      console.log("カラー情報:", response.data.responses[0]?.imagePropertiesAnnotation?.dominantColors);
+    } catch (error) {
+      console.error("エラーが発生しました:", error);
+    }
+  };
+>>>>>>> main
 
   return (
     <div className="myfirstapp-SP">
@@ -103,7 +166,11 @@ export default function MyfirstappSp(): JSX.Element {
           />
           <img
             src={profileImage}
+<<<<<<< HEAD
             className="h-100% w-100% rounded"
+=======
+            className="h-full w-full rounded"
+>>>>>>> main
           />
           <input
             name="file"
@@ -127,18 +194,37 @@ export default function MyfirstappSp(): JSX.Element {
             keymessage="アップロードした画像の要素はこちらでした。"
           />
           <div className="box">
-            <Table
-              title="企業ロゴ"
-              message="APIで呼ぶもの"
-            />
-            <Table
-              title="要素"
-              message="APIで呼ぶもの"
-            />
-            <Table
-              title="カラー"
-              message="APIで呼ぶもの"
-            />
+            {apiResults ? (
+              <>
+                <Table
+                  title="企業名"
+                  message={apiResults.logoAnnotations?.[0]?.description || "なし"}
+                />
+                <Table
+                  title="要素・製品名"
+                  message={apiResults.labelAnnotations?.[0]?.description || "なし"}
+                />
+                <Table
+                  title="使用されているカラー"
+                  message={
+                    apiResults.imagePropertiesAnnotation?.dominantColors?.colors?.[0]?.color ? (
+                      <div
+                        style={{
+                          display: "inline-block",
+                          width: "50px",
+                          height: "50px",
+                          backgroundColor: `rgb(${apiResults.imagePropertiesAnnotation.dominantColors.colors[0].color.red}, 
+                                                ${apiResults.imagePropertiesAnnotation.dominantColors.colors[0].color.green}, 
+                                                ${apiResults.imagePropertiesAnnotation.dominantColors.colors[0].color.blue})`
+                        }}
+                      />
+                    ) : "なし"
+                  }
+                />
+              </>
+            ) : (
+              <p>結果がありません。</p>
+            )}
           </div>
         </div>
       </div>

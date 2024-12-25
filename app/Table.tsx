@@ -3,7 +3,7 @@ import "./style.css";
 
 type TableProps = {
   title: string
-  message: string
+  message: string | JSX.Element
 };
 
 export const Table = (props: TableProps): JSX.Element => {
