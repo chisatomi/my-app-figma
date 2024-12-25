@@ -117,11 +117,7 @@
 
 .upload-button.hover-true {
   background-color: #edeefa;
-<<<<<<< HEAD
   border-color: #004098;
-=======
-  border-color: var(#004098);
->>>>>>> main
 }
 
 .upload-button.hover-false {

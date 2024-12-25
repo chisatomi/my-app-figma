@@ -5,15 +5,8 @@ import { Lockup } from "./Lockup";
 import { Table } from "./Table";
 import { UploadButton } from "./UploadButton";
 import "./style.css";
-<<<<<<< HEAD
-import axios, { AxiosError } from "axios";
-import { headers } from "next/headers";
-
-const apiUrl = 'https://vision.googleapis.com/v1/images:annotate'
-=======
 import axios from "axios";
 import { google } from "@google-cloud/vision/build/protos/protos";
->>>>>>> main
 
 export default function MyfirstappSp(): JSX.Element {
 
@@ -37,11 +30,7 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // アップロードした画像を表示する
-<<<<<<< HEAD
-  const [profileImage, setProfileImage] = useState("/image/noimage.png");
-=======
   const [profileImage, setProfileImage] = useState<string>();
->>>>>>> main
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
   // const onProfileButtonClick = () =>
@@ -54,54 +43,12 @@ export default function MyfirstappSp(): JSX.Element {
   }
 
   // 送信ボタンを押下してリクエスト送信する
-  const onClickSubmit = () => {
+  const onClickSubmit = async () => {
     console.log("submit");
     if (!file) {
       console.error("ファイルがせんたくされていません");
       return;
     }
-<<<<<<< HEAD
-    const formData = new FormData()
-    formData.append("file", file)
-    // Base64データに変換
-    const imageReader = new FileReader();
-
-    imageReader.addEventListener("load", async function (e) {
-      const resultImage = (imageReader.result as string).split(",").slice(1).join(",");
-      // URLに送信する
-      // const headers = {
-      //   headers: {
-      //     Authorization: "Bearer: ここにおーそりのいれる",
-      //     "x-goog-user-project": "ぷろじぇくとID入れる",
-      //     "Content-Type: application/json; charset=utf-8",
-      //   }
-      // }
-      const requestBody = {
-        requests: [
-          {
-            image: {
-              content: resultImage
-            }
-          }, {
-            features: {
-              "maxResults": 100,
-              "type": "IMAGE_PROPERTIES"
-            }
-          }
-        ]
-
-      }
-      await axios.post(`${apiUrl}`, requestBody, headers)
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((e: AxiosError) => {
-        console.error(e)
-      })
-    });
-    imageReader.readAsDataURL(file);
-  }
-=======
 
     // ファイルをBase64形式に変換
     const convertToBase64 = (file: File): Promise<string> => {
@@ -150,7 +97,6 @@ export default function MyfirstappSp(): JSX.Element {
       console.error("エラーが発生しました:", error);
     }
   };
->>>>>>> main
 
   return (
     <div className="myfirstapp-SP">
@@ -166,11 +112,7 @@ export default function MyfirstappSp(): JSX.Element {
           />
           <img
             src={profileImage}
-<<<<<<< HEAD
-            className="h-100% w-100% rounded"
-=======
             className="h-full w-full rounded"
->>>>>>> main
           />
           <input
             name="file"
